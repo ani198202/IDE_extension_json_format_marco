@@ -1,3 +1,14 @@
+<!-- 語言切換（右上角） -->
+<table align="right">
+  <tr>
+    <td>
+      <a href="README.md"><b>🇨🇳 中文</b></a> |
+      <a href="README.en.md">🇺🇸 English</a> |
+      <a href="README.ja.md">🇯🇵 日本語</a>
+    </td>
+  </tr>
+</table>
+
 # IDE_extension_json_format_marco
 
 <details>
