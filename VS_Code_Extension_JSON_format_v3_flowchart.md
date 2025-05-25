@@ -63,20 +63,20 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  C1[開始]
-  C2[取得縮排字串]
-  C3{obj 是 null?}
-  C4[回傳 null]
-  C5{obj typeof?}
-  C6[undefined]
-  C7[number/boolean]
-  C8[string]
-  C9[object]
-  C10{isArray（obj）?}
-  C11[處理陣列]
-  C12[處理物件]
-  C13[回傳 result]
-  C14[回傳 String（obj）]
+  C1[C1<br>開始]
+  C2[C2<br>取得縮排字串]
+  C3{C3<br>obj 是 null?}
+  C4[C4<br>回傳 null]
+  C5{C5<br>obj typeof?}
+  C6[C6<br>undefined]
+  C7[C7<br>number/boolean]
+  C8[C8<br>string]
+  C9[C9<br>object]
+  C10{C10<br>isArray（obj）?}
+  C11[C11<br>處理陣列]
+  C12[C12<br>處理物件]
+  C13[C13<br>回傳 result]
+  C14[C14<br>回傳 String（obj）]
 
   C1 --> C2 --> C3
   C3 -- 是 --> C4
@@ -172,7 +172,19 @@ flowchart TD
 
 ## 9. formatJson 執行流程
 
-- 調用 funcContent → parseJson → formatJsonObject（遞迴格式化）→ 覆蓋文件内容
+```mermaid
+flowchart LR
+  A[funcContent<br>讀取內容]
+  B[parseJson<br>解析JSON]
+  C[formatJsonObject<br>遞迴格式化]
+  D[覆蓋文件內容]
+
+  A --> B --> C --> D
+
+  %% 標題與說明
+  title[9. formatJson 執行流程]
+  style title fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 
