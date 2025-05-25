@@ -9,18 +9,19 @@
 本專案提供一個 EmEditor 巨集腳本，用於格式化 Visual Studio Code Extension 的 JSON 檔案。  
 特點如下：
 
-- 僅使用 ECMAScript ES2 支援的方法，兼容性高。
-- 僅使用 if、for、switch 三種基本判斷式，程式碼簡潔。
-- 不含偵錯檢查及訊息框，純粹專注於格式化功能。
-- 可自訂縮排字元與縮排寬度。
+- 僅使用 ECMAScript ES2 支援的方法，兼容性高(EmEditor最高支援到ECMAScript 5.1(不完整)，多數屬性或方法無法順利執行)。
+- 僅使用 if、for、switch 三種基本判斷式，程式碼簡潔(新型try_catch方法經常會導致巨集出錯)。
+- 不含檔案偵錯檢查及回應訊息框(會導致巨集出錯)，因為EmEditor內建的JavaScript支援度並不完整。
+- 初始值區可自訂縮排字元(indentChar)與縮排寬度(indentSize)。
 - 適用於 EmEditor 巨集環境。
 
 ### 使用方式
 
 1. 將 `VS_Code_Extension_JSON_format_v3.jsee` 巨集檔下載到本地端。
+   巨集檔案放置到軟體目錄中的/Marcos子目錄中，用功能表[巨集]->[自訂]->[添加]，選擇巨集後按[確認]。
 2. 於 EmEditor 中開啟要格式化的 JSON 檔案。
 ![JSON檔案格式化前](image/before_format.png)
-3. 執行巨集檔，檔案內容即會自動格式化。
+3. 功能表[巨集]點擊已載入的巨集執行巨集檔，檔案內容即會自動格式化。
 ![JSON檔案格式化後](image/after_format.png)
 
 ### 注意事項
