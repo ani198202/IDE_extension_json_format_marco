@@ -181,9 +181,11 @@ flowchart LR
 
   A --> B --> C --> D
 
-  %% 標題與說明
-  title[9. formatJson 執行流程]
-  style title fill:#f9f,stroke:#333,stroke-width:4px
+  subgraph 標題
+  direction TB
+  T[9. formatJson 執行流程]
+  end
+  style T fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ---
