@@ -1,16 +1,6 @@
 <!-- 語言切換（右上角） -->
-<table align="right">
-  <tr>
-    <td>
-      <a href="README.en.md">🇺🇸 English</a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="README.ja.md">🇯🇵 日本語</a>
-    </td>  
-  </tr>
-</table>
+[🇺🇸 English](#english)  
+[🇯🇵 日本語](#日本語)
 
 # IDE_extension_json_format_marco
 
@@ -45,7 +35,9 @@
 </details>
 
 <details>
-<summary>🇺🇸 English</summary>
+<summary>🇺🇸 English</summary
+
+## English
 
 ## EmEditor JSON Formatting Macro
 
@@ -76,7 +68,9 @@ This project is licensed under the [GNU General Public License v3.0](LICENSE).
 </details>
 
 <details>
-<summary>🇯🇵 日本語</summary>
+<summary>🇯🇵 日本語</summary
+
+## 日本語
 
 ## EmEditor JSON フォーマットマクロ
 
