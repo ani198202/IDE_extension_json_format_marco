@@ -6,19 +6,17 @@
 
 ## 1. 主程序流程圖 (formatJson)
 
-```mermaid
 flowchart TD
   Start([開始])
   Init[初始化變數 indentSize, indentChar, newLine]
   GetContent[funcContent 取得檔案內容]
   ParseJSON[parseJson 解析 JSON 字串]
   FormatObj[formatJsonObject 格式化 JSON 物件]
-  SelectAll[document.selection.SelectAll()]
-  ReplaceText[document.selection.Text = formattedText]
+  SelectAll["document.selection.SelectAll()"]
+  ReplaceText["document.selection.Text = formattedText"]
   End([結束])
 
   Start --> Init --> GetContent --> ParseJSON --> FormatObj --> SelectAll --> ReplaceText --> End
-```
 
 ---
 
@@ -28,12 +26,12 @@ flowchart TD
 flowchart TD
   A1[開始]
   A2[content = document.GetLine(1)]
-  A3{for i = 2 到 總行數}
+  A3{{for i = 2 到 總行數}}
   A4[content += "\r\n" + document.GetLine(i)]
   A5[回傳 content]
   A1 --> A2 --> A3
-  A3 -->|是| A4 --> A3
-  A3 -->|否| A5
+  A3 -- 是 --> A4 --> A3
+  A3 -- 否 --> A5
 ```
 
 ---
@@ -44,7 +42,7 @@ flowchart TD
 flowchart TD
   B1[開始]
   B2[移除前後空白和 BOM]
-  B3[jsonObj = (new Function("return " + jsonString))()]
+  B3[使用 new Function 解析 jsonString，取得 jsonObj]
   B4[回傳 jsonObj]
   B1 --> B2 --> B3 --> B4
 ```
@@ -57,29 +55,29 @@ flowchart TD
 flowchart TD
   C1[開始]
   C2[取得縮排字串]
-  C3{obj 是 null?}
-  C4[回傳 "null"]
-  C5{obj typeof?}
-  C6["undefined"]
-  C7["number/boolean"]
-  C8["string"]
-  C9["object"]
-  C10{isArray(obj)?}
+  C3{{obj 是 null?}}
+  C4[回傳 null]
+  C5{{obj typeof?}}
+  C6[undefined]
+  C7[number/boolean]
+  C8[string]
+  C9[object]
+  C10{{isArray(obj)?}}
   C11[處理陣列]
   C12[處理物件]
   C13[回傳 result]
   C14[回傳 String(obj)]
 
   C1 --> C2 --> C3
-  C3 --是--> C4
-  C3 --否--> C5
-  C5 --undefined--> C6 --> C14
-  C5 --number/boolean--> C7 --> C14
-  C5 --string--> C8 --> C14
-  C5 --object--> C9
+  C3 -- 是 --> C4
+  C3 -- 否 --> C5
+  C5 -- undefined --> C6 --> C14
+  C5 -- number/boolean --> C7 --> C14
+  C5 -- string --> C8 --> C14
+  C5 -- object --> C9
   C9 --> C10
-  C10 --是--> C11
-  C10 --否--> C12
+  C10 -- 是 --> C11
+  C10 -- 否 --> C12
   C11 --> C13
   C12 --> C13
   C13 --> C14
@@ -115,7 +113,7 @@ flowchart TD
 ```mermaid
 flowchart TD
   E1[開始]
-  E2[Object.prototype.toString.call(obj) === "[object Array]"]
+  E2[判斷 obj 是否為陣列]
   E3[回傳 Boolean 結果]
   E1 --> E2 --> E3
 ```
@@ -128,13 +126,13 @@ flowchart TD
 flowchart TD
   F1[開始]
   F2[length = 0]
-  F3{arr[i] !== undefined}
+  F3{{arr[i] 不為 undefined}}
   F4[length++]
   F5[回傳 length]
   F1 --> F2
   F2 --> F3
-  F3 --是--> F4 --> F3
-  F3 --否--> F5
+  F3 -- 是 --> F4 --> F3
+  F3 -- 否 --> F5
 ```
 
 ---
@@ -146,19 +144,19 @@ flowchart TD
   G1[開始]
   G2[for i = 0 到 str.length]
   G3[char = str.charAt(i)]
-  G4{switch char}
-  G5[特殊字元（如 " \ \b \f \n \r \t）處理為 escape]
-  G6[ASCII < 32 或 > 126 ?]
+  G4{{switch char}}
+  G5[遇到特殊字元處理為 escape]
+  G6{{ASCII < 32 或 > 126?}}
   G7[unicode escape]
   G8[直接加字元]
   G9[回傳 result]
   G1 --> G2
   G2 --> G3 --> G4
-  G4 --特殊字元--> G5 --> G2
-  G4 --其他--> G6
-  G6 --是--> G7 --> G2
-  G6 --否--> G8 --> G2
-  G2 --結束--> G9
+  G4 -- 特殊字元 --> G5 --> G2
+  G4 -- 其他 --> G6
+  G6 -- 是 --> G7 --> G2
+  G6 -- 否 --> G8 --> G2
+  G2 -- 結束 --> G9
 ```
 
 ---
