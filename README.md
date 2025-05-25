@@ -9,10 +9,10 @@
 本專案提供一個 EmEditor 巨集腳本，用於格式化 IDE Extension 的 JSON 檔案。  
 特點如下：
 
-- 僅使用 ECMAScript ES2 支援的方法，兼容性高。
-- 僅使用 if、for、switch 三種基本判斷式，程式碼簡潔。
-- 不含偵錯檢查及訊息框，純粹專注於格式化功能。
-- 可自訂縮排字元與縮排寬度。
+- 僅使用 ECMAScript ES2 支援的方法，兼容性高(EmEditor最高支援ECMAScript 5.1(不完整)，多數屬性或方法無法順利執行)。
+- 僅使用 if、for、switch 三種基本判斷式，程式碼簡潔(現代常用try_catch方法常會造成巨集錯誤)。
+- 不含檔案偵錯檢查及訊息框(會造成巨集錯誤)，純粹專注於格式化功能(因為 EmEditor的JavaScript支援度不完整)。
+- 可在初始區自訂縮排字元 (indentChar) 與縮排寬度 (indentSize) 。
 - 適用於 EmEditor 巨集環境。
 
 ### 使用方式
