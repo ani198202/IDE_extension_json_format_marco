@@ -2,17 +2,17 @@
 <table align="right">
   <tr>
     <td>
-      <a href="README.md"><b>🇨🇳 中文</b></a> |
-      <a href="README.en.md">🇺🇸 English</a> |
-      <a href="README.ja.md">🇯🇵 日本語</a>
+      <a href="README.en.md">🇺🇸 English</a>
     </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="README.ja.md">🇯🇵 日本語</a>
+    </td>  
   </tr>
 </table>
 
 # IDE_extension_json_format_marco
-
-<details>
-<summary>🇨🇳 中文說明</summary>
 
 ## EmEditor JSON 格式化巨集
 
