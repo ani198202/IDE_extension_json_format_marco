@@ -26,7 +26,7 @@ flowchart TD
 flowchart TD
   A1[開始]
   A2[content = document.GetLine(1)]
-  A3{{for i = 2 到 總行數}}
+  A3{for i = 2 到 總行數}
   A4[content += "\r\n" + document.GetLine(i)]
   A5[回傳 content]
   A1 --> A2 --> A3
@@ -55,14 +55,14 @@ flowchart TD
 flowchart TD
   C1[開始]
   C2[取得縮排字串]
-  C3{{obj 是 null?}}
+  C3{obj 是 null?}
   C4[回傳 null]
-  C5{{obj typeof?}}
+  C5{obj typeof?}
   C6[undefined]
   C7[number/boolean]
   C8[string]
   C9[object]
-  C10{{isArray(obj)?}}
+  C10{isArray(obj)?}
   C11[處理陣列]
   C12[處理物件]
   C13[回傳 result]
@@ -126,7 +126,7 @@ flowchart TD
 flowchart TD
   F1[開始]
   F2[length = 0]
-  F3{{arr[i] 不為 undefined}}
+  F3{arr[i] 不為 undefined}
   F4[length++]
   F5[回傳 length]
   F1 --> F2
@@ -144,9 +144,9 @@ flowchart TD
   G1[開始]
   G2[for i = 0 到 str.length]
   G3[char = str.charAt(i)]
-  G4{{switch char}}
+  G4{switch char}
   G5[遇到特殊字元處理為 escape]
-  G6{{ASCII < 32 或 > 126?}}
+  G6{ASCII < 32 或 > 126?}
   G7[unicode escape]
   G8[直接加字元]
   G9[回傳 result]
