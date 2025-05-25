@@ -183,7 +183,7 @@ flowchart LR
 
   subgraph 標題
   direction TB
-  T[9. formatJson 執行流程]
+  T[９‧formatJson 執行流程]
   end
   style T fill:#f9f,stroke:#333,stroke-width:4px
 ```
