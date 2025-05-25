@@ -1,0 +1,231 @@
+/**
+ * EmEditor JSON 格式化巨集
+ * 
+ * 此巨集用於格式化 VS Code Extension JSON 檔案
+ * 僅使用 ECMAScript ES2 支援的屬性及方法
+ * 僅使用 if、for、switch 三種判斷式
+ * 無偵錯檢查程序，無訊息框
+ */
+
+// 初始化變數
+var indentSize = 2;
+var indentChar = " ";
+var newLine = "\r\n";
+
+/**
+ * 主函數 - 格式化當前文件中的 JSON
+ */
+function formatJson() {
+  // 使用指定函數取得檔案內容
+  var text = funcContent();
+  
+  // 解析 JSON 字串
+  var jsonObj = parseJson(text);
+  
+  // 格式化 JSON
+  var formattedText = formatJsonObject(jsonObj, 0);
+  
+  // 更新文件內容 - 先選取全部，再替換
+  document.selection.SelectAll();
+  document.selection.Text = formattedText;
+}
+
+/**
+ * 取得檔案內容的函數 (由用戶提供)
+ */
+function funcContent() {
+  var content = document.GetLine(1);
+  for (i = 2; i < document.GetLines() + 1; i++) {
+    content = content + "\r\n" + document.GetLine(i);
+  }
+  return content;
+}
+
+/**
+ * 解析 JSON 字串為 JavaScript 物件
+ */
+function parseJson(jsonString) {
+  // 移除可能的 BOM 和空白
+  jsonString = jsonString.replace(/^\s+|\s+$/g, "");
+  
+  // 使用 Function 建構子解析 JSON
+  var jsonObj = (new Function("return " + jsonString))();
+  return jsonObj;
+}
+
+/**
+ * 格式化 JSON 物件
+ */
+function formatJsonObject(obj, level) {
+  var result = "";
+  var indent = getIndent(level);
+  var nextIndent = getIndent(level + 1);
+  
+  // 處理 null
+  if (obj === null) {
+    return "null";
+  }
+  
+  // 根據物件類型進行格式化
+  var objType = typeof obj;
+  
+  if (objType === "undefined") {
+    return "undefined";
+  }
+  
+  if (objType === "number" || objType === "boolean") {
+    return String(obj);
+  }
+  
+  if (objType === "string") {
+    return '"' + escapeString(obj) + '"';
+  }
+  
+  if (objType === "object") {
+    // 檢查是否為陣列
+    if (isArray(obj)) {
+      result = "[";
+      
+      // 如果陣列為空，直接返回 []
+      if (getArrayLength(obj) === 0) {
+        return "[]";
+      }
+      
+      result += newLine;
+      
+      // 遍歷陣列元素
+      for (var i = 0; i < getArrayLength(obj); i++) {
+        result += nextIndent + formatJsonObject(obj[i], level + 1);
+        
+        // 如果不是最後一個元素，添加逗號
+        if (i < getArrayLength(obj) - 1) {
+          result += ",";
+        }
+        
+        result += newLine;
+      }
+      
+      result += indent + "]";
+    } else {
+      // 處理物件
+      result = "{";
+      
+      // 計算物件屬性數量
+      var propCount = 0;
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+          propCount++;
+        }
+      }
+      
+      // 如果物件為空，直接返回 {}
+      if (propCount === 0) {
+        return "{}";
+      }
+      
+      result += newLine;
+      
+      // 遍歷物件屬性
+      var currentProp = 0;
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+          currentProp++;
+          result += nextIndent + '"' + escapeString(prop) + '": ' + formatJsonObject(obj[prop], level + 1);
+          
+          // 如果不是最後一個屬性，添加逗號
+          if (currentProp < propCount) {
+            result += ",";
+          }
+          
+          result += newLine;
+        }
+      }
+      
+      result += indent + "}";
+    }
+    
+    return result;
+  }
+  
+  // 未知類型
+  return String(obj);
+}
+
+/**
+ * 獲取指定層級的縮排字串
+ */
+function getIndent(level) {
+  var result = "";
+  for (var i = 0; i < level * indentSize; i++) {
+    result += indentChar;
+  }
+  return result;
+}
+
+/**
+ * 檢查物件是否為陣列
+ */
+function isArray(obj) {
+  return Object.prototype.toString.call(obj) === "[object Array]";
+}
+
+/**
+ * 獲取陣列長度
+ */
+function getArrayLength(arr) {
+  var length = 0;
+  for (var i = 0; arr[i] !== undefined; i++) {
+    length++;
+  }
+  return length;
+}
+
+/**
+ * 轉義字串中的特殊字元
+ */
+function escapeString(str) {
+  var result = "";
+  for (var i = 0; i < str.length; i++) {
+    var char = str.charAt(i);
+    
+    switch (char) {
+      case '"':
+        result += '\\"';
+        break;
+      case '\\':
+        result += '\\\\';
+        break;
+      case '\b':
+        result += '\\b';
+        break;
+      case '\f':
+        result += '\\f';
+        break;
+      case '\n':
+        result += '\\n';
+        break;
+      case '\r':
+        result += '\\r';
+        break;
+      case '\t':
+        result += '\\t';
+        break;
+      default:
+        var charCode = str.charCodeAt(i);
+        if (charCode < 32 || charCode > 126) {
+          var hexCode = charCode.toString(16);
+          while (hexCode.length < 4) {
+            hexCode = "0" + hexCode;
+          }
+          result += "\\u" + hexCode;
+        } else {
+          result += char;
+        }
+    }
+  }
+  
+  return result;
+}
+
+// 執行格式化
+formatJson();
