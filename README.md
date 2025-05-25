@@ -1,3 +1,7 @@
+<!-- 語言切換（右上角） -->
+[🇺🇸 English](#english)  
+[🇯🇵 日本語](#日本語)
+
 # IDE_extension_json_format_marco
 
 <details>
@@ -46,6 +50,8 @@ EmEditor 為 Emurasoft, Inc. 的註冊商標與著作權所有。
 <details>
 <summary>🇺🇸 English</summary>
 
+## English
+
 ## EmEditor JSON Formatting Macro
 
 This project provides an EmEditor macro script for formatting JSON files, specifically for Visual Studio Code Extension JSON files.  
@@ -90,6 +96,8 @@ For details on EmEditor's license and usage policy, please refer to the [officia
 
 <details>
 <summary>🇯🇵 日本語</summary>
+
+## 日本語
 
 ## EmEditor JSON フォーマットマクロ
 
