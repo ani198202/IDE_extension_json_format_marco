@@ -5,7 +5,6 @@
 # IDE_extension_json_format_marco
 
 <details>
-<summary>🇨🇳 中文說明</summary>
 
 ## EmEditor JSON 格式化巨集
 
@@ -48,7 +47,6 @@ EmEditor 為 Emurasoft, Inc. 的註冊商標與著作權所有。
 </details>
 
 <details>
-<summary>🇺🇸 English</summary>
 
 ## English
 
@@ -95,7 +93,6 @@ For details on EmEditor's license and usage policy, please refer to the [officia
 </details>
 
 <details>
-<summary>🇯🇵 日本語</summary>
 
 ## 日本語
 
