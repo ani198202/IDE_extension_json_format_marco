@@ -6,6 +6,7 @@
 
 ## 1. 主程序流程圖 (formatJson)
 
+```mermaid
 flowchart TD
   Start([開始])
   Init[初始化變數 indentSize, indentChar, newLine]
@@ -15,6 +16,15 @@ flowchart TD
   SelectAll["document.selection.SelectAll()"]
   ReplaceText["document.selection.Text = formattedText"]
   End([結束])
+  
+  Start --> Init
+  Init --> GetContent
+  GetContent --> ParseJSON
+  ParseJSON --> FormatObj
+  FormatObj --> SelectAll
+  SelectAll --> ReplaceText
+  ReplaceText --> End
+```
 
   Start --> Init --> GetContent --> ParseJSON --> FormatObj --> SelectAll --> ReplaceText --> End
 
@@ -25,9 +35,9 @@ flowchart TD
 ```mermaid
 flowchart TD
   A1[開始]
-  A2[content = document.GetLine(1)]
+  A2[content用document.GetLine函數取得第1行]
   A3{for i = 2 到 總行數}
-  A4[content += "\r\n" + document.GetLine(i)]
+  A4[document.GetLine第 i 行內容與換行字元加到 content]
   A5[回傳 content]
   A1 --> A2 --> A3
   A3 -- 是 --> A4 --> A3
@@ -62,11 +72,11 @@ flowchart TD
   C7[number/boolean]
   C8[string]
   C9[object]
-  C10{isArray(obj)?}
+  C10{isArray（obj）?}
   C11[處理陣列]
   C12[處理物件]
   C13[回傳 result]
-  C14[回傳 String(obj)]
+  C14[回傳 String（obj）]
 
   C1 --> C2 --> C3
   C3 -- 是 --> C4
@@ -126,7 +136,7 @@ flowchart TD
 flowchart TD
   F1[開始]
   F2[length = 0]
-  F3{arr[i] 不為 undefined}
+  F3{arr［i］有值嗎}
   F4[length++]
   F5[回傳 length]
   F1 --> F2
@@ -134,7 +144,6 @@ flowchart TD
   F3 -- 是 --> F4 --> F3
   F3 -- 否 --> F5
 ```
-
 ---
 
 ## 8. escapeString 轉義字串
@@ -143,8 +152,8 @@ flowchart TD
 flowchart TD
   G1[開始]
   G2[for i = 0 到 str.length]
-  G3[char = str.charAt(i)]
-  G4{switch char}
+  G3[取得str.charAt（i）字元]
+  G4{判斷是否為特殊字元}
   G5[遇到特殊字元處理為 escape]
   G6{ASCII < 32 或 > 126?}
   G7[unicode escape]
@@ -171,7 +180,7 @@ flowchart TD
 
 - **主要邏輯遞迴在 formatJsonObject**，根據類型判斷與格式化。
 - **escapeString 處理所有字串輸出安全**。
-- **處處簡單 for/if/switch，符合 ES2 語法限制**。
+- **處理簡單 for/if/switch，符合 ECMAScript v2 語法限制**。
 
 ---
 
