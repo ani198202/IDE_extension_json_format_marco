@@ -35,7 +35,7 @@
 </details>
 
 <details>
-<summary>🇺🇸 English</summary
+<summary>🇺🇸 English</summary>
 
 ## English
 
@@ -68,7 +68,7 @@ This project is licensed under the [GNU General Public License v3.0](LICENSE).
 </details>
 
 <details>
-<summary>🇯🇵 日本語</summary
+<summary>🇯🇵 日本語</summary>
 
 ## 日本語
 
