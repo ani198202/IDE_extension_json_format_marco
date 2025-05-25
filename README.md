@@ -4,8 +4,6 @@
 
 # IDE_extension_json_format_marco
 
-<details>
-
 ## EmEditor JSON 格式化巨集
 
 本專案提供一個 EmEditor 巨集腳本，用於格式化 Visual Studio Code Extension 的 JSON 檔案。  
@@ -43,10 +41,6 @@ EmEditor 為 Emurasoft, Inc. 的註冊商標與著作權所有。
 本專案僅利用 EmEditor 公開之巨集功能或 API 進行擴充，未包含或修改任何 EmEditor 原始程式碼。
 
 如需瞭解 EmEditor 之授權與使用規範，請參考 [EmEditor 官方網站](https://www.emeditor.com/)。
-
-</details>
-
-<details>
 
 ## English
 
@@ -90,10 +84,6 @@ This project utilizes only the publicly available macro features or APIs provide
 
 For details on EmEditor's license and usage policy, please refer to the [official EmEditor website](https://www.emeditor.com/).
 
-</details>
-
-<details>
-
 ## 日本語
 
 ## EmEditor JSON フォーマットマクロ
@@ -134,5 +124,3 @@ EmEditorはEmurasoft, Inc.の登録商標および著作物です。
 本プロジェクトは、EmEditorが公開しているマクロ機能やAPIのみを利用しており、EmEditorのオリジナルソースコードを含んだり、修正したりしていません。
 
 EmEditorのライセンスや利用規約については、[EmEditor公式ウェブサイト](https://www.emeditor.com/)をご参照ください。
-
-</details>
